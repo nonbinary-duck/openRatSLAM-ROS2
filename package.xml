@@ -1,7 +1,56 @@
-<package>
-  <name>ratslam_ros</name>
-  <version>0.0.1</version>
-  <description>ratslam_ros</description>
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>ratslam_ros2</name>
+  <version>0.1.0</version>
+  <!-- (this file is also taken from (nearby) https://github.com/ros2/examples/blob/iron/rclcpp/topics/minimal_subscriber/lambda.cpp) -->
+  <description>OpenRatSLAM in ROS2</description>
+  <maintainer email="no@email.com">name</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>opencv2</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>image_transport</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>boost</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>message_runtime</build_depend>
+
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>opencv2</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>boost</exec_depend>
+  <exec_depend>message_generation</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
+
+<!-- <package>
+  <name>ratslam_ros2</name>
+  <version>0.1.0</version>
+  <description>ratslam_ros2</description>
 
   <author>scott</author>
   <maintainer email="davidmichaelball@gmail.com">David Ball</maintainer>
@@ -9,7 +58,9 @@
   <license>BSD</license>
   <url>http://ros.org/wiki/ratslam</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <!-- <buildtool_depend>catkin</buildtool_depend> -->
+
+
 
   <build_depend>std_msgs</build_depend>
   <build_depend>geometry_msgs</build_depend>
@@ -25,19 +76,18 @@
   <build_depend>message_generation</build_depend>
   <build_depend>message_runtime</build_depend>
 
-  <run_depend>std_msgs</run_depend>
-  <run_depend>geometry_msgs</run_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>sensor_msgs</run_depend>
-  <run_depend>nav_msgs</run_depend>
-  <run_depend>opencv2</run_depend>
-  <run_depend>tf</run_depend>
-  <run_depend>visualization_msgs</run_depend>
-  <run_depend>image_transport</run_depend>
-  <run_depend>nav_msgs</run_depend>
-  <run_depend>boost</run_depend>
-  <run_depend>message_generation</run_depend>
-  <run_depend>message_runtime</run_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>opencv2</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>boost</exec_depend>
+  <exec_depend>message_generation</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
 
-</package>
-
+</package> -->

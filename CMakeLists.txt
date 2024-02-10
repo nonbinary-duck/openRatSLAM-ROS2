@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 2.8.3)
-project(ratslam_ros)
+cmake_minimum_required(VERSION 3.12)
+# cmake_minimum_required(VERSION 2.8.3)
+
+set(PROJ_NAME, ratslam_ros2)
+
+project(${PROJ_NAME})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -7,7 +11,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS message_generation std_msgs roscpp sensor_msgs nav_msgs tf visualization_msgs image_transport nav_msgs) ## actionlib_msgs)
+# find_package(catkin REQUIRED COMPONENTS message_generation std_msgs roscpp sensor_msgs nav_msgs tf visualization_msgs image_transport nav_msgs) ## actionlib_msgs)
+# ROS2 build pipeline
+find_package(ament_cmake REQUIRED)
+# ROS2 pacakges
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -18,14 +27,23 @@ find_package(OpenGL REQUIRED)
 message(${OpenCV_LIBRARIES})
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-   FILES
-   TopologicalAction.msg
-   TopologicalEdge.msg
-   TopologicalMap.msg
-   TopologicalNode.msg
-   ViewTemplate.msg
+# add_message_files(
+#    FILES
+#    TopologicalAction.msg
+#    TopologicalEdge.msg
+#    TopologicalMap.msg
+#    TopologicalNode.msg
+#    ViewTemplate.msg
+# )
+rosidl_generate_interfaces(${PROJ_NAME}
+  msg/TopologicalAction.msg
+  msg/TopologicalEdge.msg
+  msg/TopologicalMap.msg
+  msg/TopologicalNode.msg
+  msg/ViewTemplate.msg
+  DEPENDENCIES std_msgs
 )
+
 
 ## Generate actions in the 'msg' folder
 #add_action_files(DIRECTORY action FILES DoDishes.action)
@@ -46,9 +64,10 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-CATKIN_DEPENDS message_runtime geometry_msgs std_msgs
-)
+# catkin_package(
+# CATKIN_DEPENDS message_runtime geometry_msgs std_msgs
+# )
+ament_export_dependencies( message_runtime geometry_msgs std_msgs )
 
 
 ###########
@@ -58,9 +77,9 @@ CATKIN_DEPENDS message_runtime geometry_msgs std_msgs
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+# include_directories(
+#   ${catkin_INCLUDE_DIRS}
+# )
 
 #ratslam library
 add_library(ratslam src/ratslam/experience_map.cpp src/ratslam/posecell_network.cpp src/ratslam/local_view_match.cpp src/ratslam/visual_odometry.cpp)
